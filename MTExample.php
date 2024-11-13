@@ -3,6 +3,7 @@
     
     // Load Class
     $timing = new MeasureTime();
+    
     // Set output format
     $timing->timeFormat("%9.4f");
 
@@ -13,19 +14,21 @@
     }
     
     // Add another timing point
-    $timing->addPoint("startdivide");
-    $anumber = 1.23456e+32;
-    while ($anumber > 1) {
-        $anumber /= 2;
+    $timing->addPoint("startanother");
+    for($something = 0; $something < 2500; $something++) {
+       sleep(0.0025);
     }
+    
     // Add a final point
     $timing->addPoint("alldone");
 
     // No output format 
-    echo "Loop   " . $timing->timeDuration('startloop', 'startdivide', null) . "\n";
+    echo "Loop   " . $timing->timeDuration('startloop', 'startanother', null) . "\n";
+    
     // Use default format specified earlier
-    echo "Divide " . $timing->timeDuration('startdivide', 'alldone') . "\n";
-    // Use this format for output
+    echo "Divide " . $timing->timeDuration('startanother', 'alldone') . "\n";
+    
+    // Use a different format for output
     echo "Total  " . $timing->timeDuration('startloop', 'alldone', "%11.6f") . "\n\n";
     
     // Clean up / dlear all points
