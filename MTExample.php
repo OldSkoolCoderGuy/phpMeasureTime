@@ -31,5 +31,5 @@
     // Use a different format for output
     echo "Total  " . $timing->timeDuration('startloop', 'alldone', "%11.6f") . "\n\n";
     
-    // Clean up / dlear all points
+    // Clean up / clear all points
     $timing->reset();
